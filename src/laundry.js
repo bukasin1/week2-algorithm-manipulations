@@ -9,6 +9,8 @@ function getMaxPairs(noOfWashes, cleanPile, dirtyPile) {
     cleanPile.sort()
     dirtyPile.sort()
     let unmatchedCleanSocks = []
+
+    //Handling the clean pile. Finding matching pairs and pushing unmatched socks into an array for further processing.
     while(cleanPile.length){
         if(cleanPile.includes(cleanPile[0],1)){
             maxPair++
@@ -19,6 +21,7 @@ function getMaxPairs(noOfWashes, cleanPile, dirtyPile) {
         }
     }
 
+    //Handling the remaining sorted unmatched socks, checking in the dirty pile with the available no of washes if there are any matching pairs.
     for(sock of unmatchedCleanSocks){
         if(dirtyPile.includes(sock) && noOfWashes > 0){
             maxPair++
@@ -28,6 +31,7 @@ function getMaxPairs(noOfWashes, cleanPile, dirtyPile) {
         }
     }
 
+    //Handling the remaining dirty socks, checking together with the no of washes if there are matching pairs that can be watched and added up.
     while(dirtyPile.length && noOfWashes >= 2){
         if(dirtyPile.includes(dirtyPile[0],1)){
             maxPair++

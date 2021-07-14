@@ -91,9 +91,11 @@
 
 
 function classifier(input) {
+    //Check to make sure provided input is an array.
     if(!Array.isArray(input)){
         throw new Error('Input not valid')
     }
+    //copy the input data, to avoid mutating the main data.
     inputData = [...input]
     inputData.map(person => {
         let dob = new Date(person.dob)
@@ -105,8 +107,10 @@ function classifier(input) {
         return a.age-b.age
     })
     let groupCount = 0, grouped = []
-    console.log(inputData[0] === inputData[0])
-    console.log(JSON.stringify([1,2]))
+    // console.log(inputData[0] === inputData[0])
+    // console.log([1,2] + 'we')
+
+    //Using the array reduce method, process the data and generate desired output at once.
     let output = inputData.reduce((output,person,index) => {
 
         if(!grouped.includes(person)){
@@ -127,7 +131,6 @@ function classifier(input) {
 
         return output
     }, {noOfGroups : groupCount})
-    console.log(groupCount)
     output['noOfGroups'] = groupCount
 
     return output
