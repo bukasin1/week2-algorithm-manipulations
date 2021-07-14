@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "jest"
+    "test": "jest src/classifier.js"
   },
   "devDependencies": {
     "@types/jest": "24.0.15",
